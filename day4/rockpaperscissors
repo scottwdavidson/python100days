@@ -1,0 +1,111 @@
+import time
+import random
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+
+# function to pick machine's choice
+def machine_choice():
+    machineChoice = random.randint(1,3)
+    if machineChoice == 1:
+        return "rock"
+    elif machineChoice == 2:
+        return "paper"
+    else:
+        return "scissors"
+    
+
+
+# function to compare two rock/paper/scissors choices to determine if there's a winner
+def first_beats_second(first , second):
+
+    # equal : FALSE
+    if first == second:
+        return False
+    
+    # first == "rock"
+    elif first == "rock":
+
+        # winner !
+        if second == "scissors":
+            return True
+        # loser ( paper covers rock )
+        else:
+            return False
+        
+    # first == "paper"
+    elif first == "paper":
+
+        # winner !
+        if second == "rock":
+            return True
+        # loser ( scissors cut paper )
+        else:
+            return False
+        
+    # first == "scissors"
+    else:
+
+        # winner !
+        if second == "paper":
+            return True
+        # loser ( rock crushes scissors)
+        else:
+            return False
+
+def print_choice(participant, choice):
+    print(f"({participant} choice:)\n")
+    if choice == "rock":
+        print(rock)
+    elif choice == "paper":
+        print(paper)
+    else:
+        print(scissors)
+    print("\n\n")
+        
+print("Welcome to Scott's Rock / Paper / Scissors - Machine v Human")
+humanChoice = input("Please type your choice: rock , paper or scissors: \n")
+
+if not (humanChoice == "rock" or humanChoice == "paper" or humanChoice == "scissors"):
+    print(f"{humanChoice} is not recognized as a valid choice, please try again")
+else:
+
+    print_choice("human", humanChoice)
+
+    # Randomly pick choice for machine and print it
+    machineChoice = machine_choice()
+    print_choice("machine", machineChoice)
+
+
+    # Declare winner 
+    if first_beats_second(humanChoice, machineChoice):
+        print(f"human {humanChoice} WINS!!")
+    elif first_beats_second(machineChoice, humanChoice):
+        print(f"machine {machineChoice} WINS!!")
+    else:
+        print("DRAW")
