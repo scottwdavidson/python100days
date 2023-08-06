@@ -5,13 +5,16 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 def random_letter():
-    return letters[random.randint(0,len(letters)-1)]
+    # return letters[random.randint(0,len(letters)-1)]
+    return random.choice(letters)
 
 def random_number():
-    return numbers[random.randint(0,len(numbers)-1)]
+    # return numbers[random.randint(0,len(numbers)-1)]
+    return random.choice(numbers)
 
 def random_symbol():
-    return symbols[random.randint(0,len(symbols)-1)]
+    # return symbols[random.randint(0,len(symbols)-1)]
+    return random.choice(symbols)
 
 def random_item_type_order():
     itemTypes = ["letters","numbers","symbols"]
